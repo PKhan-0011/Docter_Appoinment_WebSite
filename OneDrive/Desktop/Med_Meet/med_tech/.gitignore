@@ -42,3 +42,10 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+
+# Ignore everything outside this project folder
+../*
+../../*
+../../../*
+../../../../*
