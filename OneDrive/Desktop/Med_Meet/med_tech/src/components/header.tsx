@@ -2,6 +2,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {Button} from '@/components/ui/button'
+
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 
 const Header = () => {
   return (
@@ -16,13 +24,24 @@ const Header = () => {
                             className='h-12 w-auto pl-5'
                         />
                   </Link>
+              
+              <div className='flex items-center space-x-2'>
+                      <SignedOut>
+                             <SignInButton>
+                                 <Button variant="secondary" className='bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer'>SignIn</Button>
+                              </SignInButton>
 
-                  <Link href={'/sign-up'}>
-                      SignUp
-                  </Link>
+                     </SignedOut>
+             <SignedIn>
+                   <UserButton />
+             </SignedIn>
+              </div>
+                  
             </nav>
      </header>
   )
 }
 
-export default Header
+export default Header;
+
+        
