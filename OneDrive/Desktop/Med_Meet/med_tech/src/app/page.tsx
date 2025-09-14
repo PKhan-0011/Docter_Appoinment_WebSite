@@ -1,8 +1,10 @@
 'use client'
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Icon from '@/lib/Icon';
-import { MovingBorder } from "@/components/ui/moving-border";
+import Image from "next/image";
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -27,20 +29,30 @@ export default function Home() {
                                       
                                       <div className="flex items-center gap-2 ">
                                              
-                                           <Button className="flex items-center gap-2 px-4 py-2 text-[1em] rounded bg-light_dark h-12 w-50 mx-6"> Get Started  <Icon /></Button>
+                                            <Link href={'/onboarding'}>
+                                                   <Button className="flex items-center gap-2 px-4 py-2 text-[1em] rounded bg-light_dark h-12 w-50 mx-6"> Get Started  <Icon /></Button>
+                                            </Link>
                                             
-                                            <Button className="px-4 py-2 rounded bg-gray-800 text-white text-base w-50 h-12">Find Doctors</Button>
+                                            <Link href={'/doctors'}>
+                                                  <Button className="px-4 py-2 rounded bg-gray-800 text-white text-base w-50 h-12">Find Doctors</Button>
+                                            </Link>
 
                                       </div>
 
                              </div>
-
+                               
+                               <div>
+                                    <Image 
+                                      src={'/banner2(1).png'}
+                                      alt='Doctor consultation'
+                                    />
+                               </div>
 
                       </div>
 
-                      <div>
-                          
-                      </div>
+                      {/* <div>
+                             isme kuch extra chize put kar denge okkh!..
+                      </div> */}
                 </div>
             </section>
                   
