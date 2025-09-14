@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Icon from '@/lib/Icon';
 import Image from "next/image";
 import Link from 'next/link';
+import { ArrowBigRight } from "lucide-react";
+
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
           <div className="bg-background">
             <section className="relative overflow-hidden py-24 container mx-auto">
                 <div>
-                      <div>
+                      <div className="">
                             <div className="space-y-10">
                                   <Badge variant="outline" className="bg-emerald-900/50 border-none p-3 mx-auto text-1xl text-light03_green">HealthCare made simple</Badge>
                                    
@@ -30,7 +31,7 @@ export default function Home() {
                                       <div className="flex items-center gap-2 ">
                                              
                                             <Link href={'/onboarding'}>
-                                                   <Button className="flex items-center gap-2 px-4 py-2 text-[1em] rounded bg-light_dark h-12 w-50 mx-6"> Get Started  <Icon /></Button>
+                                                   <Button className="flex items-center gap-2 px-4 py-2 text-[1em] rounded bg-light_dark h-12 w-50 mx-6"> Get Started <ArrowBigRight /> </Button>
                                             </Link>
                                             
                                             <Link href={'/doctors'}>
@@ -41,13 +42,16 @@ export default function Home() {
 
                              </div>
                                
-                               <div>
+                               <div className=" relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden">
                                     <Image 
-                                      src={'/banner2(1).png'}
+                                      src={'/banner2 (1).png'}
                                       alt='Doctor consultation'
+                                      fill 
+                                      priority
+                                      className="object-cover md:pt-14 rounded-xl"
                                     />
                                </div>
-
+                             
                       </div>
 
                       {/* <div>
