@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/card";
 import { creditBenefits, features } from "@/lib/data";
 import {Stethoscope} from 'lucide-react';
+import { testimonials } from "@/lib/data";
+
 
 
 
@@ -170,7 +172,110 @@ export default function Home() {
                     </section>
 
                     {/*Testinomial section ayega abb yha s okkh!..*/}
+                     
+                     <section className="py-20 bg-bg_muted">
+                        <div className="container mx-auto px-4">
+                              <div className="text-center mb-16 space-y-8">
+
+                                       <Badge variant="outline" 
+                                       className="bg-emerald-900/50 border border-transparent hover:border-white transition-all duration-300 p-3 mx-auto text-1xl text-light03_green">
+                                         Success Stories
+                                       </Badge>
+
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 ">
+                                           What Our Users Says
+                                    </h1>
+
+                                       <p className="text-neutral-300 text-lg max-w-2xl mx-auto ">
+                                             Our platform has transformed the way our users work and learn. 
+                                             From beginners to experts, everyone shares their success stories and experiences with us.
+                                             Join them and see the difference!
+                                      </p>
+                              </div> 
+
+                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                      
+                                      {
+                                        testimonials.map((test, index) => (
+                                              <Card key={index} 
+                                                className="bg-card border-emrald-900/20 hover:border-emerald-800/40 transition-all duration-300">
+                                                   
+                                                   <CardContent>
+                                                       <div className="space-y-4">
+                                                      <div className="flex flex-row gap-4 items-center ">
+                                                            <span className="text-emerald-400 text-bold">{test.initials}</span>
+                                                            <h4 className="text-1xl text-white">{test.name}</h4>
+                                                      </div>
+                                                             <div className="bg-emerald-900 px-4 py-2 items-center rounded min-w-30">
+                                                                  <p>{test.role}</p>
+                                                             </div>
+                                                    </div>
+                                                    <p className="text-muted-foreground mt-6">
+                                                     &quote: {test.quote}&quote;
+                                                    </p>
+                                                   </CardContent>
+                                                </Card>
+                                        ))
+                                      } 
+
+                                     
+
+                                </div>
+                        </div>
+                    </section>
+
+                     
+                     <section className="py-20 ">
+                        <div className="container mx-auto px-4">
+
+                                  <Card className="bg-gradient-to-r from-emerald-900/30 to-emerald-950/20 border-emerald-800/20">
+                                   <CardContent className="pt-6">
+                                       
+                                       <div className="">
+                                           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                                                Ready to take control of healthcare
+                                           </h2>
+
+                                           <p className="text-lg text-muted-foreground mb-8">
+                                                Join thousands of users who have simplified their healthcare
+                                                journey with our platform. Get started today and experience
+                                                healthcare the way it should be.
+                                           </p>
+
+                                           <div className='flex flex-rows gap-4'>
+                                                <Button
+                                                 variant="destructive"
+                                                 size='lg'
+                                                 className="bg-emerald-600 text-white hover:bg-emerald-700 "
+                                                >
+                                                      <Link href={'/sign-in'}>Sign up Now</Link>
+                                                </Button>
+
+                                                <Button
+                                                 variant="outline"
+                                                 size='lg'
+                                                 className="border-emerald-700/30 hover:bg-muted/80"
+                                                >
+                                                  <Link href={'/pricing'}>View Pricing</Link>
+                                                </Button>
+
+                                           </div>
+                                       </div>
+
+                                        {/*ye code alg se kuch designing k hai okkh!..*/}
+
+                                         <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-emerald-800/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+                                        <div className="absolute left-0 bottom-0 w-[200px] h-[200px] bg-emerald-700/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+                                     
+                                   </CardContent>
+                                   
+                                 </Card> 
+                       
+                        </div>
+                    </section>
+
           </div>
      </>
   );
 }
+

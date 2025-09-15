@@ -17,7 +17,7 @@ module.exports = {
            light_dark: '#008156',
            light_brown: '#7e7e7c',
            bg_muted: 'oklch(21.6% 0.006 56.043)'
-       }
+       },
     },
   },
   plugins: [],
