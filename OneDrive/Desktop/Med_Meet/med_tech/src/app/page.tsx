@@ -4,16 +4,26 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from 'next/link';
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, Check } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardHeader,
+} from "@/components/ui/card";
+import { creditBenefits, features } from "@/lib/data";
+import {Stethoscope} from 'lucide-react';
+
+
 
 
 export default function Home() {
   return (
      <>
           <div className="bg-background">
-            <section className="relative overflow-hidden py-24 container mx-auto">
-                <div>
-                      <div className="">
+            <section className="relative overflow-hidden py-20 container mx-auto">
+                <div className="relative overflow-hidden py-20">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
                             <div className="space-y-10">
                                   <Badge variant="outline" className="bg-emerald-900/50 border-none p-3 mx-auto text-1xl text-light03_green">HealthCare made simple</Badge>
                                    
@@ -39,27 +49,127 @@ export default function Home() {
                                             </Link>
 
                                       </div>
-
                              </div>
                                
-                               <div className=" relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden">
+                               <div className=" relative h-[400px] lg:h-[600px] w-full rounded-xl overflow-hidden mr-10 mb-10">
                                     <Image 
                                       src={'/banner2 (1).png'}
                                       alt='Doctor consultation'
                                       fill 
                                       priority
-                                      className="object-cover md:pt-14 rounded-xl"
+                                      className="object-cover md:pt-8 rounded-lg h-[100px] w-[100px]"
                                     />
                                </div>
-                             
                       </div>
-
-                      {/* <div>
-                             isme kuch extra chize put kar denge okkh!..
-                      </div> */}
                 </div>
             </section>
                   
+
+                   {/* Featured Section ayega yah s abb okkh!..*/}
+                    <section className="py-20 bg-bg_muted">
+                        <div className="container mx-auto px-4">
+                              <div className="text-center mb-16">
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 ">
+                                          How its works
+                                    </h1>
+
+                                       <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
+                                          Our platform makes healthcare accessible with just a few clicks
+                                      </p>
+                              </div>
+
+                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                       {
+                                          
+                                           features.map((feature, index) => (
+                                                <Card key={index} 
+
+                                                className="bg-card border-emrald-900/20 hover:border-emerald-800/40 transition-all duration-300">
+
+                                                    <CardHeader className="pb-2">
+                                                            
+                                                            <div className="bg-emerald-900/20 p-3 rounded-lg w-fit mb-4">
+                                                                  {feature.icon}
+                                                            </div>
+
+                                                      <CardTitle
+                                                         className="text-xl font-semibold text-white"
+                                                      >{feature.title}</CardTitle>
+
+                                                    </CardHeader>
+                                                    <CardContent>
+                                                      <p className="text-muted-foreground">{feature.description}</p>
+                                                    </CardContent>
+                                                
+                                                </Card>
+                                                
+                                           ))
+                                         
+                                       }
+                                 </div>
+                        </div>
+                    </section>
+
+                    {/* Ye wala jo section hai isme hame Consultation packages write down karenge okkh!...*/}
+                  <section className="py-20 ">
+                        <div className="container mx-auto px-4">
+                              <div className="text-center mb-16 space-y-8">
+
+                                       <Badge variant="outline" 
+                                       className="bg-emerald-900/50 border border-transparent hover:border-white transition-all duration-300 p-3 mx-auto text-1xl text-light03_green">
+                                       Affordable HealthCare
+                                       </Badge>
+
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 ">
+                                           Consultation Packages
+                                    </h1>
+
+                                       <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
+                                           Choose the perfect consultation package that files your healthcare needs.
+                                      </p>
+                              </div> 
+
+                                <div>
+                                      {/*pricing Table ayega yha p sahi s kar liyo usse okkh!..*/}
+
+                                      {/* Yha p abb hame ek aur chiz dhyan dena hai like How our credit works etc..*/}
+
+                                      <Card className="mt-12 bg-bg_muted border-emerald-900/30 ">
+                                             <CardHeader>
+
+                                               <CardTitle className="text-xl font-semibold text-white flex items-center">
+                                                   <Stethoscope className="h-8 w-8 mr-2 text-emerald-400 "/>
+                                                      How Our Credit Systeam Work
+                                               </CardTitle>
+                                             </CardHeader>
+                                             <CardContent>
+                                                    <ul>
+                                                      {creditBenefits.map((credit,index) => (
+                                                            <li key={index} className="flex items-center ">
+                                                                  <div className="flex items-center  gap-4 mt-1 mr-3 bg-emerald-900/20 p-1 rounded-full">
+                                                                        <Check className="h-5 w-5 text-emerald-400"/>
+                                                                           
+                                                                           <p
+                                                                             className="text-muted-foreground"
+                                                                             dangerouslySetInnerHTML={{__html:credit}}
+                                                                           />   
+                                                                  </div>
+                                                            </li>
+                                                      ))}
+                                                    </ul>
+                                             </CardContent>
+                                             
+                                       </Card>
+
+                                </div>
+
+                                
+
+
+                        </div>
+                    </section>
+
+                    {/*Testinomial section ayega abb yha s okkh!..*/}
           </div>
      </>
   );

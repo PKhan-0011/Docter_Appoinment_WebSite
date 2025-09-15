@@ -19,7 +19,11 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules:{
+       "no-explicit-any": "off", 
+  }
   },
+  
 ];
 
 export default eslintConfig;
