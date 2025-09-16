@@ -67,7 +67,7 @@ enum verificationStatus {
 model Availability {
 
    id          String @id @default(uuid())
-   doctorId    String?
+   doctorId    String
    doctor      User @relation(fields: [doctorId], references: [id])
    startTime   DateTime
    endTime     DateTime
@@ -98,5 +98,61 @@ enum SlotStatus {
 
 
 model Appoinment {
-  
+
+     id String @id @default(uuid())
+
+     patientId String
+
+     patient User @relation("patientAppoinments", fields:[patientId], references: [id])  
+
+     doctorId String
+     doctor User @relation("doctorAppoinments", fields:[doctorId], references: [id])
+
+     startTime DateTime
+     endTime DateTime
+     status AppoinmentStatus @default(UNASSIGNED)
+     notes String?
+     patientDescription String?
+
+     //Video session 
+
+     videoSessionId     String? 
+     videoSessionToken  String?
+
+     createdAt DateTime? @default(now())
+     updatedAt DateTime @updatedAt()
+
+     @@index([status, startTime])
+     @@index([doctorId, startTime])
 }
+
+enum AppoinmentStatus {
+   UNASSIGNED
+   SCHEDULED
+   COMPLETED
+   CANCELED
+}
+
+
+model CreditTransaction {
+    id        String @id @default(uuid())
+    userId    String
+    user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    amount    Int  // postive and negative dono ho sakte hai okkh!..
+    type      TranasactionType @default(UNASSIGNED)
+    packageId String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+}
+
+enum TranasactionType {
+   UNASSIGNED
+   UPI 
+   CASH
+   CREDIT
+   ADMIN_ADJUSMENT
+   APPOINMENT_DEDUCTION
+}
+
+
