@@ -143,16 +143,19 @@ model CreditTransaction {
     packageId String?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
+    
+    @@index([amount]) 
 }
 
 enum TranasactionType {
    UNASSIGNED
    UPI 
    CASH
-   CREDIT
+   CREDIT_PURCHASE
    ADMIN_ADJUSMENT
    APPOINMENT_DEDUCTION
 }
 
+
+// iske badd mughe generally prisma client ko connnect karna hota hai okkh!.. don't get to forget..
 

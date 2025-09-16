@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from '@/components/header';
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
 const inter = Inter({subsets: ["latin"]}); 
 
@@ -20,11 +21,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    
+ 
+
   return (
 
     <ClerkProvider 
      appearance={{
-       baseTheme: dark,
+       baseTheme: dark
      }}
     >
 
@@ -46,6 +50,7 @@ export default function RootLayout({
          
 
          <main className="min-h-screen pt-[1em]">
+
               {children}
          </main>
 

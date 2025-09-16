@@ -80,7 +80,7 @@ export const testimonials = [
 
 // JSON data for credit system benefits
 export const creditBenefits = [
-    "Each consultation requires <strong class='text-emerald-400'>2 credits</strong> regardless of duration",
+  "Each consultation requires <strong class='text-emerald-400'>2 credits</strong> regardless of duration",
   "Credits <strong class='text-emerald-400'>never expire</strong> - use them whenever you need",
   "Monthly subscriptions give you <strong class='text-emerald-400'>fresh credits every month</strong>",
   "Cancel or change your subscription <strong class='text-emerald-400'>anytime</strong> without penalties",
@@ -89,3 +89,7 @@ export const creditBenefits = [
 
 //className="w-6 h-6 text-emerald-400"
 
+//  initials: "JT",
+//     name: "James T.",
+//     role: "Patient",
+//     // quote:
