@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// There are 4 model that have to be created like..
+
+model User {
+   id String  @id @default(uuid())
+   clerkUserId String @unique
+   email String @unique
+   userName String?
+   imageUrl String?
+   role UserRole @default(UNASSIGNED)  // UNASSIGNED:- Patient, Doctor, Admin
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt()
+   
+   //Patient-specific fields 
+   credits Int @default(2)
+
+   // Doctor-specific feild
+
+   specialty String?
+   experience Int?
+   credentailUrl String? 
+   description String? 
+   verificationStatus verificationStatus? @default(UNASSIGNED)
+
+   // Relation's 
+   patientAppoinments Appoinment[] @relation("patientAppoinments")
+   doctorAppoinments  Appoinment[] @relation("doctorAppoinments")
+   avilabilities      Availability[]
+   transactions       CreditTransaction[]
+
+}
+
+// Yha p hamne unassigned liya hai role m isme hamm actaully pura data define kr sakte the okkh!..
+// enum k trough bcz hame yha p pta hi nahi hai ki kon s data ayega that's why okkh!...
+
+enum UserRole {
+   UNASSIGNED
+   PATIENT
+   DOCTOR 
+   ADMIN
+}
+
+// enum hame ek tarikhe ki fixed boundation deta hai bcz isse hamm yahi data le sakte hai iske alawa kuch bhi nahi lenge okkh!.
+
+enum verificationStatus {
+    UNASSIGNED
+    PENDING
+    VERIFIED
+    REJECTED
+}
+
+model Availability {
+
+   id          String @id @default(uuid())
+   doctorId    String?
+   doctor      User @relation(fields: [doctorId], references: [id])
+   startTime   DateTime
+   endTime     DateTime
+   status      SlotStatus @default(UNASSIGNED)
+
+
+   @@index([doctorId, startTime])   // Ye ek tarikhe ka index craete kar deta hai and data finding searching m bhi easy ho jata hai isse okkh!..
+
+}
+
+enum SlotStatus {
+    UNASSIGNED
+    AVAILABILE
+    UNAVAILABILE
+}
+
+
+// Yha p like bhut sari chize ati hai in relationShip..
+// one-one one-many many-many...
+// one-to one profile profile @relation(feilds:[kuchkiis], referbesId:[jisse relate hoga uski id]);
+// one-many profile profile[] @realtion('profile')...
+// many-many students studnt[] array lage honge jisme wo one-many and one-one ho sakte hai okkh!/..
+
+
+// *** Kuch imp points to note that ki in one-one relationship be like ki
+// fields:[KhudKiId], references:[jisse relate hoga uski id okkh!] 
+//@@index([column1, cilumn2]) iska use hamm searching k liye karte hai okkh!.. like finding k liye kuch okkh!.. agar iska use hamm karte hai to data mil jayega asani s okkh!>.
+
+
+model Appoinment {
+  
+}
