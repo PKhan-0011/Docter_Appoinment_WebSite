@@ -66,11 +66,12 @@ import {db} from './prismaConnect';
                  return userName;
 
           }
+
           catch(error){
                const err = error as Error;
                  console.log(err);
-                 throw new Error('Error are there ', err);
-          } 
+                 throw new Error(' Error are there ', err);
+          }
     }
 
     // Iska follow kuch is hisab ka hai like ki agar user Login hi nahi hai to return kardo 
